@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+    <a href="/translate">Перевести</a>
+    <a href="/upload" class="active">Загрузить</a>
+    <a href="/langs">Все языки</a>
+    <a href="javascript:void(0);" class="icon" onclick="ResponsiveMenuBtn()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+<div class="container">
+    <h2>Автоматический загрузчик субтитров на youtube</h2>
+    <p>Укажите ссылку на видео, выберите zip архив с srt файлами (например "Русский_ru.srt"), нажмите кнопку "Загрузить". Сервис может загружать до 50 srt файлов в сутки (1 srt файл = 1 язык на видео). Это может длиться до 5 минут.</p>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-25">
+                <label for="video">Ссылка на youtube ролик</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="video" name="video" placeholder="https://www.youtube.com/watch?v=jNQXAC9IVRw">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="zip">Zip-архив с субтитрами</label>
+            </div>
+            <div class="col-75">
+                <input name="zip" id="zip" type="file">
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Загрузить">
+        </div>
+    </form>
+</div>
+
+<script>
+    function ResponsiveMenuBtn() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+</body>
+</html>

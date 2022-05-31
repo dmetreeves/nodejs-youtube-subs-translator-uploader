@@ -1,0 +1,7 @@
+src/chromeData
+src/google_auth_tokens
+src/node_modules
+src/result
+src/srt
+src/.env
+src/.env.prod
