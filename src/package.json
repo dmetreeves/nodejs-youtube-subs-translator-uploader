@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "dependencies": {
     "adm-zip": "^0.5.5",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "express-basic-auth": "^1.2.1",
     "formidable": "^1.2.2",
     "google-auth-library": "^7.0.4",
-    "googleapis": "^73.0.0"
+    "googleapis": "^73.0.0",
+    "serve-favicon": "^2.5.0"
   }
 }

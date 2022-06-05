@@ -1,0 +1,41 @@
+<div class="topnav" id="myTopnav">
+    <a href="/translate" class="active">Перевести</a>
+    <a href="/upload">Загрузить</a>
+    <a href="/langs">Все языки</a>
+    <a href="javascript:void(0);" class="icon" onclick="ResponsiveMenuBtn()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+<div class="container">
+    <h2>Автоматический переводчик субтитров по всем языкам на yandex translate</h2>
+    <p>После нажатия кнопки "Перевести" на сервере начнется процесс перевода текста субтитров из поля "Субтитры" по всем языкам из поля "Языки". Это может длиться до 5 минут. Затем автоматически скачается zip-файл с названием из поля "Файл" со всеми переводами внутри.</p>
+    <form action="/translate" method="POST">
+        <div class="row">
+            <div class="col-25">
+                <label for="filename">Файл</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="filename" name="filename" placeholder="Название выходного файла...">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="languages">Языки</label>
+            </div>
+            <div class="col-75">
+                <textarea id="languages" name="languages" placeholder="Список языков с yandex translate" style="height:200px">#content#</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="text">Субтитры</label>
+            </div>
+            <div class="col-75">
+                <textarea id="text" name="text" placeholder="Английский текст субтитров, который нужно перевести..." style="height:200px"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Перевести и скачать">
+        </div>
+    </form>
+</div>

@@ -37,6 +37,15 @@ class EnvVars {
         const val = this.oneByNameOrUndefined(name) || defaultVal;
         return val === true || val === 'true';
     }
+    objByNameOrDefault(name, defaultVal) {
+        try {
+            const maybeVal = this.oneByNameOrUndefined(name);
+            const maybeObj = JSON.parse(maybeVal);
+            return maybeObj || defaultVal;
+        } catch (e) {
+            return defaultVal;
+        }
+    }
 }
 
 module.exports = { EnvVars }

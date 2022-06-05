@@ -9,7 +9,7 @@ services:
     #env_file: 
     #  - ./src/.env
     #command: tail -f /dev/null
-    command: sh -c "npm install && node server.mjs"
+    command: sh -c "npm install && node app.mjs"
     cap_add:
       - SYS_ADMIN
     mem_limit: 2000m
