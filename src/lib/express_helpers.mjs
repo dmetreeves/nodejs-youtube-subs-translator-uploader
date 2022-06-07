@@ -71,17 +71,15 @@ function postTranslateEndpoint(translator) {
                     throw new Error("langs field is missing!")
                 }
                 let outputFileName = fields.filename;
-                if(outputFileName === undefined)
+                if(outputFileName === undefined || outputFileName.length == 0)
                     outputFileName = 'srt';
                 else
                     outputFileName = outputFileName.toString().trim();
                 const result = await translator.translateAndGetZipBuffer( langs, text, outputFileName );
                 if(result === undefined) {
-                    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-                    res.end('Текст субтитров не распознан или ошибка в коде не дает выполнить перевод :(');
+                    throw new Error('Текст субтитров не распознан или ошибка в коде не дает выполнить перевод :(');
                 } else if(result === 'busy') {
-                    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-                    res.end('Переводчик еще не завершил предыдущий запрос. Попробуйте позже.');
+                    throw new Error('Переводчик еще не завершил предыдущий запрос. Попробуйте позже.');
                 } else {
                     res.setHeader('Content-Type', 'application/zip');
                     res.setHeader('Content-Disposition', `attachment; filename="${ outputFileName }.zip"`);

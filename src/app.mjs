@@ -11,13 +11,13 @@ import {
     postTranslateEndpoint,
     postUploadEndpoint
 } from './lib/express_helpers.mjs';
-import YandexTranslator from "./lib/YandexTranslator.mjs";
+import SingleTaskYandexTranslator from './lib/SingleTaskYandexTranslator.mjs'
 import 'dotenv/config';
 
 const { EnvVars } = EnvVarsCjs;
 const env = new EnvVars(process.env);
 
-const translator = new YandexTranslator(
+const translator = new SingleTaskYandexTranslator(
     env.oneByName('YANDEX_API_KEY')
 );
 const googleOauthClientsCredsList = JSON.parse(
@@ -54,5 +54,5 @@ app.use(function(err, req, res, next) {
 const port = env.oneByNameOrDefault("HTTP_PORT", 80);
 
 app.listen(port, () => {
-    console.log(`Subs app listening on port ${port}`);
+    console.log(`Subs app listening on port ${ port }`);
 });

@@ -1,8 +1,18 @@
-export class LockableYandexTranslator {
+import YandexTranslator from "./YandexTranslator.mjs";
+
+export default class SingleTaskYandexTranslator {
     #subj;
     #isLocked = false;
-    constructor(subj) {
-        this.#subj = subj;
+    constructor(apiKey) {
+        this.#subj = new YandexTranslator(
+            apiKey
+        );
+    }
+    yandexAllowedLangNamesEn() {
+        return this.#subj.yandexAllowedLangNamesEn();
+    }
+    yandexAllowedLangNamesRu() {
+        return this.#subj.yandexAllowedLangNamesRu();
     }
     yandexActiveLangNamesEn() {
         return this.#subj.yandexActiveLangNamesEn();
