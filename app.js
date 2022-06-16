@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import EnvVarsCjs  from './lib/EnvVars.js';
+import EnvVars  from './lib/EnvVars.js';
 import basicAuth from 'express-basic-auth'
 import { 
     viewEngine, 
@@ -14,7 +14,6 @@ import {
 import SingleTaskYandexTranslator from './lib/SingleTaskYandexTranslator.mjs'
 import 'dotenv/config';
 
-const { EnvVars } = EnvVarsCjs;
 const env = new EnvVars(process.env);
 
 const translator = new SingleTaskYandexTranslator(
@@ -30,7 +29,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 app.use(basicAuth({
-    users: env.objByNameOrDefault("HTTP_BASIC_AUTH_CREDS", {trans:"late"}),
+    users: env.objByNameOrDefault("HTTP_SERVER_BASIC_AUTH_CREDS", {trans:"late"}),
     challenge: true // <--- needed to actually show the login dialog!
 }));
 
@@ -51,7 +50,7 @@ app.use(function(err, req, res, next) {
     res.status(500).send(err.message);
 });
 
-const port = env.oneByNameOrDefault("HTTP_PORT", 80);
+const port = env.oneByNameOrDefault("HTTP_SERVER_PORT", 80);
 
 app.listen(port, () => {
     console.log(`Subs app listening on port ${ port }`);
